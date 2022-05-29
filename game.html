@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="kaos.css" />
+    <title>kaos</title>
+  </head>
+  <body>
+    <div class="grid"></div>
+
+    <script>
+      const grid = document.querySelector(".grid");
+      const resultsDisplay = document.querySelector(".results");
+      let joueur = 202;
+      let width = 15;
+      let direction = 1;
+      let alienId;
+      let goingRight = true;
+      let alienRemoved = [];
+      let results = 0;
+
+      for (let i = 0; i < 225; i++) {
+        const square = document.createElement("div");
+        grid.appendChild(square);
+      }
+
+      const cases = Array.from(document.querySelectorAll(".grid div"));
+
+      const ennemy = [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+        30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+      ];
+
+      function draw() {
+        for (let i = 0; i < ennemy.length; i++) {
+          if (!alienRemoved.includes(i)) {
+            cases[ennemy[i]].classList.add("alien");
+          }
+        }
+      }
+
+      draw();
+
+      function remove() {
+        for (let i = 0; i < ennemy.length; i++) {
+          cases[ennemy[i]].classList.remove("alien");
+        }
+      }
+
+      cases[joueur].classList.add("joueur");
+
+      document.addEventListener("space", shoot);
+    </script>
+  </body>
+</html>
