@@ -1,5 +1,5 @@
 <?php
-require 'connexion-data';
+require 'connexion-data.php';
 if ($_POST) {
     $erreur = "";
 
